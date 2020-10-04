@@ -25,14 +25,11 @@ The payment methods currently supported are Cards, USSD, Mpesa, GH Mobile Money,
 
 **Step 2.** Add the dependency
 
-If you want to use the default  UI, add the `rave_android` module dependency
+In your `pubspec.yaml` file add:
 
+1. `flutterwave: 1.0.0`
+2. run `pub get`
 
-dependencies {
-
-implementation 'com.github.Flutterwave.rave-android:rave_android:2.1.6'
-
-}
 
 
 ## Usage
@@ -81,8 +78,6 @@ Create a `Flutterwave` instance by calling the constructor `Flutterwave.UiPaymen
 >  **PLEASE NOTE**
 
 > We advise you to do a further verification of transaction's details on your server to be sure everything checks out before providing service or goods.
-
-### For using the non UI module
  
 
 ## Help
