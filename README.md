@@ -78,6 +78,7 @@ Create a `Flutterwave` instance by calling the constructor `Flutterwave.UiPaymen
 >  **PLEASE NOTE**
 
 > We advise you to do a further verification of transaction's details on your server to be sure everything checks out before providing service or goods.
+
  
 
 ## Help
