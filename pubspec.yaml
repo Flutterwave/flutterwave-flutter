@@ -1,6 +1,6 @@
 name: "flutterwave"
-description: "A package to integrate Flutterwave payment into flutter applications"
-version: 0.0.1
+description: "Flutterwave official flutter library to accept payment via card, USSD, Mobile Money etc."
+version: 0.1.0
 author: "Flutterwave Developers"
 homepage: "https://github.com/Flutterwave/flutterwave-flutter"
 

@@ -30,6 +30,10 @@ See [references](#references) for links to dashboard and API documentation.
 ### Prerequisite
 
 - Ensure you have your test (and live) [API keys](https://developer.flutterwave.com/docs/api-keys).
+```
+Flutter version >= 1.22.0
+Flutterwave version 3 API keys
+```
 
  ### Installing
  
@@ -39,8 +43,8 @@ See [references](#references) for links to dashboard and API documentation.
 
 In your `pubspec.yaml` file add:
 
-1. `flutterwave: 1.0.0`
-2. run `pub get`
+1. `flutterwave: 0.1.0`
+2. run `flutter pub get`
 
 <a id="usage"></a>
 ## Usage
@@ -50,7 +54,7 @@ In your `pubspec.yaml` file add:
 Create a `Flutterwave` instance by calling the constructor `Flutterwave.UiPayment()` The `UiPayment` accepts a mandatory instance of the calling `Context` , `publicKey`, `encryptionKey`, `amount`, `currency`, `email`, `fullName`, `txRef`, `isDebugMode` and `phoneNumber` . It returns an instance of `Flutterwave`  which we then call the `async` method `.initializeForUiPayments()` on.
 
     void beginPayment async () { 
-      try {  
+       try { 
 		     final ChargeResponse response = await Flutterwave.UiPayment(  
 	            context: build_context_here,
 	            publicKey: "public_key_here",
@@ -98,6 +102,12 @@ Create a `Flutterwave` instance by calling the constructor `Flutterwave.UiPaymen
 
 <a id="build-tools"></a>
 ## Built Using
+- [flutter](https://flutter.dev/)
+- [dart](https://dart.dev/)
+- [http](https://pub.dev/packages/http)
+- [tripledes](https://pub.dev/packages/tripledes)
+- [hexcolor](https://pub.dev/packages/hexcolor)  
+- [webview_flutter](https://pub.dev/packages/webview_flutter)
 
 <a id="references"></a>
 ## Flutterwave API  References
