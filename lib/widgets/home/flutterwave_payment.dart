@@ -37,6 +37,16 @@ class _FlutterwaveUIState extends State<FlutterwaveUI> {
       debugShowCheckedModeBanner: paymentManager.isDebugMode,
       home: Scaffold(
         key: this._scaffoldKey,
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          leading: BackButton(
+            color: Colors.black,
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
+        ),
         body: SingleChildScrollView(
           child: ConstrainedBox(
             constraints: BoxConstraints(

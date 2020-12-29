@@ -80,6 +80,12 @@ class PayWithBankAccountState extends State<PayWithBankAccount> {
               ],
             ),
           ),
+          leading: BackButton(
+            color: Colors.black,
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
         ),
         body: Padding(
           padding: EdgeInsets.all(10),

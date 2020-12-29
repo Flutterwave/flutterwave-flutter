@@ -55,6 +55,12 @@ class _PayWithBankTransferState extends State<PayWithBankTransfer> {
                 ],
               ),
             ),
+            leading: BackButton(
+              color: Colors.black,
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
           ),
           body: Padding(
               padding: EdgeInsets.all(10),

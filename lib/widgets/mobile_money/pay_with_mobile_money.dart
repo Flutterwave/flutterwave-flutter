@@ -66,6 +66,12 @@ class _PayWithMobileMoneyState extends State<PayWithMobileMoney> {
               ],
             ),
           ),
+          leading: BackButton(
+            color: Colors.black,
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
         ),
         body: Padding(
           padding: EdgeInsets.all(10),
@@ -97,8 +103,9 @@ class _PayWithMobileMoneyState extends State<PayWithMobileMoney> {
                     ),
                   ),
                   Visibility(
-                    visible: currency.toUpperCase() == FlutterwaveCurrency.XAF ||
-                        currency.toUpperCase() == FlutterwaveCurrency.XOF,
+                    visible:
+                        currency.toUpperCase() == FlutterwaveCurrency.XAF ||
+                            currency.toUpperCase() == FlutterwaveCurrency.XOF,
                     child: Container(
                       margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
                       width: double.infinity,
@@ -212,8 +219,9 @@ class _PayWithMobileMoneyState extends State<PayWithMobileMoney> {
   }
 
   Widget _getNetworksThatAllowMobileMoney() {
-    final networks = FlutterwaveCurrency.getAllowedMobileMoneyNetworksByCurrency(
-        this.widget._paymentManager.currency);
+    final networks =
+        FlutterwaveCurrency.getAllowedMobileMoneyNetworksByCurrency(
+            this.widget._paymentManager.currency);
     return Container(
       height: 220,
       margin: EdgeInsets.fromLTRB(0, 10, 0, 0),

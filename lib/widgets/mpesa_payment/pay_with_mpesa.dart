@@ -54,6 +54,12 @@ class _PayWithMpesaState extends State<PayWithMpesa> {
               ],
             ),
           ),
+          leading: BackButton(
+            color: Colors.black,
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
         ),
         body: Padding(
           padding: EdgeInsets.all(10),
