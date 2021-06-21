@@ -4,7 +4,7 @@ version: 0.0.3-dev.3
 homepage: "https://github.com/Flutterwave/flutterwave-flutter"
 
 environment:
-  sdk: ">=2.12.0-0 <3.0.0"
+  sdk: '>=2.12.0 <3.0.0'
   flutter: ">=1.17.0"
 
 dependencies:
@@ -12,10 +12,10 @@ dependencies:
     sdk: flutter
 
   http: ^0.13.3
-  tripledes: ^2.1.0
-  flutter_3des: ^0.0.4
-  encrypt: ^5.0.0
+  # tripledes: ^2.1.0
+  # flutter_3des: ^0.0.4
   webview_flutter: ^2.0.8
+  dart_des: ^1.0.0
 
 dev_dependencies:
   flutter_test:

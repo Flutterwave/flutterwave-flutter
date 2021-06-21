@@ -1,10 +1,10 @@
-import 'package:flutter_3des/flutter_3des.dart';
+import 'dart:convert';
+
+// A pure dart implementation
+import 'package:dart_des/dart_des.dart';
 import 'package:flutterwave/core/flutterwave_error.dart';
 import 'package:flutterwave/models/francophone_country.dart';
 import 'package:flutterwave/utils/flutterwave_currency.dart';
-import 'package:encrypt/encrypt.dart';
-// ignore: import_of_legacy_library_into_null_safe
-import 'package:tripledes/tripledes.dart';
 
 class FlutterwaveUtils {
   // Encryption keys
@@ -13,23 +13,18 @@ class FlutterwaveUtils {
   /// Returns a String
   static Future<String> tripleDESEncrypt(
       dynamic data, String encryptionKey) async {
-    String _key = new String.fromCharCodes(Key.fromUtf8(encryptionKey).bytes);
-    String _iv = IV.fromSecureRandom(64).toString();
-    // print(_key.length);
-    // print(_iv);
-    // print("702040801020305070B0D1101020305070B0D1112110D0B0".length);
+    List<int> encryptedNew;
+    String newEncryption;
+
+    /// Initialization Vector used as part of the CBC 3DES encryption
+    /// TODO: Server-side decryption must account for the CBC encryption using an initialization vector stated below
+    List<int> iv = [1, 2, 3, 4, 5, 6, 7, 8];
     try {
-      final blockCipher = BlockCipher(TripleDESEngine(), encryptionKey);
-      final String encrypted = blockCipher.encodeB64(data);
-      final String _encryptBase64 =
-          await Flutter3des.encryptToBase64(data, _key + _key, iv: _iv);
-      print("Encrypted: " + encrypted);
-      print("Decrypted: " + blockCipher.decodeB64(encrypted));
-      print("Encrypted N: " + _encryptBase64);
-      print("Decrypted N: " +
-          await Flutter3des.decryptFromBase64(_encryptBase64, _key + _key,
-              iv: _iv));
-      return _encryptBase64;
+      DES3 des3CBC =
+          DES3(key: encryptionKey.codeUnits, mode: DESMode.CBC, iv: iv);
+      encryptedNew = des3CBC.encrypt(data.codeUnits);
+      newEncryption = base64.encode(encryptedNew);
+      return newEncryption;
     } catch (error) {
       throw (FlutterWaveError("Unable to encrypt request"));
     }
