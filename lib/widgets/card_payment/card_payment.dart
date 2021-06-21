@@ -175,9 +175,11 @@ class _CardPaymentState extends State<CardPayment>
                   width: double.infinity,
                   height: 45,
                   margin: EdgeInsets.fromLTRB(40, 20, 20, 40),
-                  child: RaisedButton(
+                  child: ElevatedButton(
                     onPressed: this._onCardFormClick,
-                    color: Colors.orangeAccent,
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.orangeAccent,
+                    ),
                     child: Text(
                       "PAY",
                       style: TextStyle(color: Colors.white),
@@ -277,6 +279,7 @@ class _CardPaymentState extends State<CardPayment>
     this._closeDialog();
     final ChargeRequestAddress addressDetails = await Navigator.of(context)
         .push(MaterialPageRoute(builder: (context) => RequestAddress()));
+    // ignore: unnecessary_null_comparison
     if (addressDetails != null) {
       this._showLoading(FlutterwaveConstants.VERIFYING_ADDRESS);
       this.widget._paymentManager.addAddress(addressDetails);
@@ -362,7 +365,8 @@ class _CardPaymentState extends State<CardPayment>
         textAlign: TextAlign.center,
       ),
     );
-    this._scaffoldKey.currentState?.showSnackBar(snackBar);
+    ScaffoldMessenger.of(this._scaffoldKey.currentContext!)
+        .showSnackBar(snackBar);
   }
 
   Future<void> _showLoading(String message) {

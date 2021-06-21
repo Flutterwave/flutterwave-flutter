@@ -154,9 +154,11 @@ class _MyHomePageState extends State<MyHomePage> {
                 width: double.infinity,
                 height: 50,
                 margin: EdgeInsets.fromLTRB(0, 20, 0, 10),
-                child: RaisedButton(
+                child: ElevatedButton(
                   onPressed: this._onPressed,
-                  color: Colors.blue,
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.blue,
+                  ),
                   child: Text(
                     "Make Payment",
                     style: TextStyle(color: Colors.white),

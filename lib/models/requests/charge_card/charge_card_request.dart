@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutterwave/flutterwave.dart';
 import 'package:flutterwave/models/requests/authorization.dart';
 import 'package:flutterwave/utils/flutterwave_urls.dart';

@@ -1,3 +1,7 @@
+## [0.1.0] - Jun 21, 2021
+* Null Safe implementation
+* New better encryption
+
 ## [0.0.3-dev.3] - May 19, 2021
 * Added support for card payment in ZAR
 

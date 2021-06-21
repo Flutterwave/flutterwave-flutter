@@ -33,95 +33,101 @@ class _RequestAddressState extends State<RequestAddress> {
         child: Form(
           key: _addressFormKey,
           child: Container(
-              margin: EdgeInsets.fromLTRB(0, 50, 0, 0),
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    Text(
-                      "Enter your billing address details",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 15,
+            margin: EdgeInsets.fromLTRB(0, 50, 0, 0),
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  Text(
+                    "Enter your billing address details",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 15,
+                    ),
+                  ),
+                  TextFormField(
+                    decoration: InputDecoration(
+                      labelText: "Address",
+                      hintText: "Address e.g 10, Lincoln boulevard",
+                    ),
+                    controller: this._addressFieldController,
+                    validator: (value) => value != null && value.isNotEmpty
+                        ? null
+                        : "Address is required",
+                    textInputAction: TextInputAction.next,
+                    keyboardType: TextInputType.text,
+                    autocorrect: false,
+                  ),
+                  TextFormField(
+                    decoration: InputDecoration(
+                      labelText: "City",
+                      hintText: "City e.g Chicago",
+                    ),
+                    controller: this._cityFieldController,
+                    validator: (value) => value != null && value.isNotEmpty
+                        ? null
+                        : "City is required",
+                    textInputAction: TextInputAction.next,
+                    keyboardType: TextInputType.text,
+                    autocorrect: false,
+                  ),
+                  TextFormField(
+                    decoration: InputDecoration(
+                      labelText: "State",
+                      hintText: "State e.g Illinois",
+                    ),
+                    controller: this._stateFieldController,
+                    validator: (value) => value != null && value.isNotEmpty
+                        ? null
+                        : "State is required",
+                    textInputAction: TextInputAction.next,
+                    keyboardType: TextInputType.text,
+                    autocorrect: false,
+                  ),
+                  TextFormField(
+                    decoration: InputDecoration(
+                      labelText: "Zipcode",
+                      hintText: "Zipcode e.g 1002293",
+                    ),
+                    controller: this._zipCodeFieldController,
+                    validator: (value) => value != null && value.isNotEmpty
+                        ? null
+                        : "Zipcode is required",
+                    textInputAction: TextInputAction.next,
+                    keyboardType: TextInputType.text,
+                    autocorrect: false,
+                  ),
+                  TextFormField(
+                    decoration: InputDecoration(
+                      labelText: "Country",
+                      hintText: "Country e.g Nigeria",
+                    ),
+                    controller: this._countryFieldController,
+                    validator: (value) => value != null && value.isNotEmpty
+                        ? null
+                        : "Country is required",
+                    textInputAction: TextInputAction.next,
+                    keyboardType: TextInputType.text,
+                    autocorrect: false,
+                  ),
+                  Container(
+                    width: double.infinity,
+                    height: 50,
+                    margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                    child: ElevatedButton(
+                      onPressed: this._onAddressFilled,
+                      style: ElevatedButton.styleFrom(
+                          primary: Colors.orangeAccent),
+                      child: Text(
+                        "CONTINUE PAYMENT",
+                        style: TextStyle(color: Colors.white),
                       ),
                     ),
-                    TextFormField(
-                      decoration: InputDecoration(
-                        labelText: "Address",
-                        hintText: "Address e.g 10, Lincoln boulevard",
-                      ),
-                      controller: this._addressFieldController,
-                      validator: (value) =>
-                      value != null && value.isNotEmpty ? null : "Address is required",
-                      textInputAction: TextInputAction.next,
-                      keyboardType: TextInputType.text,
-                      autocorrect: false,
-                    ),
-                    TextFormField(
-                      decoration: InputDecoration(
-                        labelText: "City",
-                        hintText: "City e.g Chicago",
-                      ),
-                      controller: this._cityFieldController,
-                      validator: (value) =>
-                      value != null && value.isNotEmpty ? null : "City is required",
-                      textInputAction: TextInputAction.next,
-                      keyboardType: TextInputType.text,
-                      autocorrect: false,
-                    ),
-                    TextFormField(
-                      decoration: InputDecoration(
-                        labelText: "State",
-                        hintText: "State e.g Illinois",
-                      ),
-                      controller: this._stateFieldController,
-                      validator: (value) =>
-                      value != null && value.isNotEmpty ? null : "State is required",
-                      textInputAction: TextInputAction.next,
-                      keyboardType: TextInputType.text,
-                      autocorrect: false,
-                    ),
-                    TextFormField(
-                      decoration: InputDecoration(
-                        labelText: "Zipcode",
-                        hintText: "Zipcode e.g 1002293",
-                      ),
-                      controller: this._zipCodeFieldController,
-                      validator: (value) =>
-                      value != null && value.isNotEmpty ? null : "Zipcode is required",
-                      textInputAction: TextInputAction.next,
-                      keyboardType: TextInputType.text,
-                      autocorrect: false,
-                    ),
-                    TextFormField(
-                      decoration: InputDecoration(
-                        labelText: "Country",
-                        hintText: "Country e.g Nigeria",
-                      ),
-                      controller: this._countryFieldController,
-                      validator: (value) =>
-                          value != null && value.isNotEmpty ? null : "Country is required",
-                      textInputAction: TextInputAction.next,
-                      keyboardType: TextInputType.text,
-                      autocorrect: false,
-                    ),
-                    Container(
-                      width: double.infinity,
-                      height: 50,
-                      margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
-                      child: RaisedButton(
-                        onPressed: this._onAddressFilled,
-                        color: Colors.orangeAccent,
-                        child: Text(
-                          "CONTINUE PAYMENT",
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
+            ),
           ),
         ),
       ),
@@ -136,7 +142,8 @@ class _RequestAddressState extends State<RequestAddress> {
       addressValue["state"] = this._stateFieldController.text;
       addressValue["country"] = this._countryFieldController.text;
       addressValue["zipcode"] = this._zipCodeFieldController.text;
-      return Navigator.of(this.context).pop(ChargeRequestAddress.fromJson(addressValue));
+      return Navigator.of(this.context)
+          .pop(ChargeRequestAddress.fromJson(addressValue));
     }
   }
 }

@@ -91,25 +91,6 @@ main() {
         }
       ];
 
-      final bankResult = [
-        {
-          "bankname": "ACCESS BANK NIGERIA",
-          "bankcode": "044",
-          "internetbanking": false
-        },
-        {
-          "bankname": "FIRST BANK PLC",
-          "bankcode": "011",
-          "internetbanking": false
-        },
-        {"bankname": "GTBANK PLC", "bankcode": "058", "internetbanking": false},
-        {
-          "bankname": "ZENITH BANK PLC",
-          "bankcode": "057",
-          "internetbanking": false
-        }
-      ];
-
       final response = jsonEncode(bankResultV3);
       final client = MockClient();
       final mockResponse = http.Response(response, 200);

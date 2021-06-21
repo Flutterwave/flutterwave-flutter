@@ -53,9 +53,9 @@ class USSDDetails extends StatelessWidget {
             height: 40,
             width: double.infinity,
             margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
-            child: RaisedButton(
+            child: ElevatedButton(
               onPressed: this._handlePaymentMade,
-              color: Colors.orange,
+              style: ElevatedButton.styleFrom(primary: Colors.orange),
               child: Text(
                 "I have made the transfer",
                 style: TextStyle(color: Colors.white, fontSize: 18),

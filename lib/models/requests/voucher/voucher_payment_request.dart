@@ -1,5 +1,3 @@
-import 'package:flutter/cupertino.dart';
-
 class VoucherPaymentRequest {
   String amount;
   String currency;
@@ -19,7 +17,7 @@ class VoucherPaymentRequest {
     required this.pin,
   });
 
- /// Converts instance of VoucherPaymentRequest to json
+  /// Converts instance of VoucherPaymentRequest to json
   Map<String, dynamic> toJson() {
     return {
       'amount': this.amount,

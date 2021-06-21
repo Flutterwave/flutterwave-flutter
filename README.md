@@ -183,9 +183,7 @@ Create a `Flutterwave` instance by calling the constructor `Flutterwave.forUIPay
 - [flutter](https://flutter.dev/)
 - [dart](https://dart.dev/)
 - [http](https://pub.dev/packages/http)
-- [tripledes](https://pub.dev/packages/tripledes)
-- [flutter_3des](https://pub.dev/packages/flutter_3des)
-- [encrypt](https://pub.dev/packages/encrypt)
+- [dart_des](https://pub.dev/packages/dart_des)
 - [webview_flutter](https://pub.dev/packages/webview_flutter)
 
 <a id="references"></a>

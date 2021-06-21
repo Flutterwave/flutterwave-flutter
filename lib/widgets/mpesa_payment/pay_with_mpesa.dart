@@ -30,6 +30,7 @@ class _PayWithMpesaState extends State<PayWithMpesa> {
   Widget build(BuildContext context) {
     final String initialPhoneNumber = this.widget._paymentManager.phoneNumber;
     this._phoneNumberController.text =
+        // ignore: unnecessary_null_comparison
         initialPhoneNumber != null ? initialPhoneNumber : "";
 
     return MaterialApp(
@@ -52,16 +53,17 @@ class _PayWithMpesaState extends State<PayWithMpesa> {
                       hintText: "Phone Number",
                     ),
                     controller: this._phoneNumberController,
-                    validator: (value) =>
-                        value != null && value.isEmpty ? "Phone number is required" : null,
+                    validator: (value) => value != null && value.isEmpty
+                        ? "Phone number is required"
+                        : null,
                   ),
                   Container(
                     width: double.infinity,
                     height: 50,
                     margin: EdgeInsets.fromLTRB(0, 40, 0, 20),
-                    child: RaisedButton(
+                    child: ElevatedButton(
                       onPressed: this._onPayPressed,
-                      color: Colors.orange,
+                      style: ElevatedButton.styleFrom(primary: Colors.orange),
                       child: Text(
                         "Pay with Mpesa",
                         textAlign: TextAlign.center,
@@ -136,7 +138,8 @@ class _PayWithMpesaState extends State<PayWithMpesa> {
         textAlign: TextAlign.center,
       ),
     );
-    this._scaffoldKey.currentState!.showSnackBar(snackBar);
+    ScaffoldMessenger.of(this._scaffoldKey.currentContext!)
+        .showSnackBar(snackBar);
   }
 
   void _handlePayment() async {
