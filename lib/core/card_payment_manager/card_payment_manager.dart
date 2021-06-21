@@ -61,10 +61,11 @@ class CardPaymentManager {
 
   /// Responsible for encrypting charge requests using 3DES encryption
   /// it returns a map
-  Map<String, String> _prepareRequest(
-      final ChargeCardRequest chargeCardRequest) {
-    final String encryptedChargeRequest = FlutterwaveUtils.tripleDESEncrypt(
-        jsonEncode(chargeCardRequest.toJson()), encryptionKey);
+  Future<Map<String, String>> _prepareRequest(
+      final ChargeCardRequest chargeCardRequest) async {
+    final String encryptedChargeRequest =
+        await FlutterwaveUtils.tripleDESEncrypt(
+            jsonEncode(chargeCardRequest.toJson()), encryptionKey);
     return FlutterwaveUtils.createCardRequest(encryptedChargeRequest);
   }
 
@@ -75,12 +76,12 @@ class CardPaymentManager {
     this.chargeCardRequest = chargeCardRequest;
 
     if (this.cardPaymentListener == null) {
-      this.cardPaymentListener!.onError("No CardPaymentListener Attached!");
+      this.cardPaymentListener!.onError("No Card Payment Listener Attached!");
       return;
     }
     _stopwatch.start();
     try {
-      encryptedPayload = this._prepareRequest(chargeCardRequest);
+      encryptedPayload = await this._prepareRequest(chargeCardRequest);
 
       final url = FlutterwaveURLS.getBaseUrl(this.isDebugMode) +
           FlutterwaveURLS.CHARGE_CARD_URL;
@@ -104,7 +105,7 @@ class CardPaymentManager {
     }
   }
 
-  /// Responsible for vhandling card payment responses depending on
+  /// Responsible for handling card payment responses depending on
   /// the card's authorization mode.
   /// It calls the Callback methods when it required additional information
   /// for authorisation
@@ -147,9 +148,8 @@ class CardPaymentManager {
               ?.onError("Unable to complete payment. Please try another card");
         }
         if (requiresOtp) {
-          return this
-              .cardPaymentListener
-              ?.onRequireOTP(responseBody, responseBody.data!.processorResponse!);
+          return this.cardPaymentListener?.onRequireOTP(
+              responseBody, responseBody.data!.processorResponse!);
         }
 
         if (responseBody.status == FlutterwaveConstants.SUCCESS &&
@@ -203,9 +203,7 @@ class CardPaymentManager {
     if (Authorization.OTP == authMode) {
       final _authMode = response.data?.processorResponse;
       if (_authMode != null) {
-        return this
-            .cardPaymentListener
-            ?.onRequireOTP(response, _authMode);
+        return this.cardPaymentListener?.onRequireOTP(response, _authMode);
       }
       return this
           .cardPaymentListener

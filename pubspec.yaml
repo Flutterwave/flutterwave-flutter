@@ -11,15 +11,17 @@ dependencies:
   flutter:
     sdk: flutter
 
-  http: ^0.13.0
+  http: ^0.13.3
   tripledes: ^2.1.0
-  webview_flutter: ^2.0.2
+  flutter_3des: ^0.0.4
+  encrypt: ^5.0.0
+  webview_flutter: ^2.0.8
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
-  mockito: 5.0.0
+  mockito: ^5.0.10
+  build_runner: ^2.0.4
 flutter:
   uses-material-design: true
   fonts:

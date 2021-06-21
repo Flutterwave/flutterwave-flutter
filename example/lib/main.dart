@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  MyHomePage({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
@@ -29,8 +29,10 @@ class _MyHomePageState extends State<MyHomePage> {
   final amountController = TextEditingController();
   final currencyController = TextEditingController();
   final narrationController = TextEditingController();
-  final publicKeyController = TextEditingController();
-  final encryptionKeyController = TextEditingController();
+  final publicKeyController = TextEditingController(
+      text: "FLWPUBK_TEST-0fb289bc4c0e648c5169b28613400a81-X");
+  final encryptionKeyController =
+      TextEditingController(text: "FLWSECK_TEST8cdb8c986fcb");
   final emailController = TextEditingController();
   final phoneNumberController = TextEditingController();
 
@@ -62,7 +64,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   style: TextStyle(color: Colors.black),
                   decoration: InputDecoration(hintText: "Amount"),
                   validator: (value) =>
-                      value.isNotEmpty ? null : "Amount is required",
+                      value!.isNotEmpty ? null : "Amount is required",
                 ),
               ),
               Container(
@@ -77,7 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     hintText: "Currency",
                   ),
                   validator: (value) =>
-                      value.isNotEmpty ? null : "Currency is required",
+                      value!.isNotEmpty ? null : "Currency is required",
                 ),
               ),
               Container(
@@ -114,7 +116,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     hintText: "Email",
                   ),
                   validator: (value) =>
-                      value.isNotEmpty ? null : "Email is required",
+                      value!.isNotEmpty ? null : "Email is required",
                 ),
               ),
               Container(
@@ -127,7 +129,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     hintText: "Phone Number",
                   ),
                   validator: (value) =>
-                      value.isNotEmpty ? null : "Phone Number is required",
+                      value!.isNotEmpty ? null : "Phone Number is required",
                 ),
               ),
               Container(
@@ -169,7 +171,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   _onPressed() {
-    if (this.formKey.currentState.validate()) {
+    if (this.formKey.currentState!.validate()) {
       this._handlePaymentInitialization();
     }
   }
@@ -187,13 +189,15 @@ class _MyHomePageState extends State<MyHomePage> {
       narration: "Example Project",
       isDebugMode: this.isDebug,
       phoneNumber: this.phoneNumberController.text.trim(),
+      acceptUgandaPayment: true,
       acceptAccountPayment: true,
       acceptCardPayment: true,
-      acceptUSSDPayment: true
+      acceptUSSDPayment: true,
     );
     final response = await flutterwave.initializeForUiPayments();
+    // ignore: unnecessary_null_comparison
     if (response != null) {
-      this.showLoading(response.data.status);
+      this.showLoading(response.data!.status!);
     } else {
       this.showLoading("No Response!");
     }

@@ -99,7 +99,7 @@ class _CardPaymentState extends State<CardPayment>
                   children: [
                     Container(
                       width: MediaQuery.of(context).size.width / 7,
-                      margin: EdgeInsets.fromLTRB(30, 5, 30, 5),
+                      margin: EdgeInsets.fromLTRB(20, 5, 20, 5),
                       child: TextFormField(
                         decoration: InputDecoration(
                           hintText: "MM",
@@ -111,6 +111,7 @@ class _CardPaymentState extends State<CardPayment>
                         textInputAction: TextInputAction.next,
                         keyboardType: TextInputType.number,
                         autocorrect: false,
+                        textAlign: TextAlign.center,
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 20.0,
@@ -121,7 +122,7 @@ class _CardPaymentState extends State<CardPayment>
                     ),
                     Container(
                       width: MediaQuery.of(context).size.width / 7,
-                      margin: EdgeInsets.fromLTRB(40, 5, 40, 5),
+                      margin: EdgeInsets.fromLTRB(20, 5, 20, 5),
                       child: TextFormField(
                         decoration: InputDecoration(
                           hintText: "YY",
@@ -133,6 +134,7 @@ class _CardPaymentState extends State<CardPayment>
                         textInputAction: TextInputAction.next,
                         keyboardType: TextInputType.number,
                         autocorrect: false,
+                        textAlign: TextAlign.center,
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 20.0,
@@ -143,7 +145,7 @@ class _CardPaymentState extends State<CardPayment>
                     ),
                     Container(
                       width: MediaQuery.of(context).size.width / 7,
-                      margin: EdgeInsets.fromLTRB(40, 5, 40, 5),
+                      margin: EdgeInsets.fromLTRB(20, 5, 20, 5),
                       child: TextFormField(
                         decoration: InputDecoration(
                           hintText: "Cvv",
@@ -156,6 +158,7 @@ class _CardPaymentState extends State<CardPayment>
                         keyboardType: TextInputType.number,
                         obscureText: true,
                         autocorrect: false,
+                        textAlign: TextAlign.center,
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 20.0,
@@ -204,7 +207,11 @@ class _CardPaymentState extends State<CardPayment>
     this._showLoading(FlutterwaveConstants.INITIATING_PAYMENT);
 
     final ChargeCardRequest chargeCardRequest = ChargeCardRequest(
-        cardNumber: this._cardNumberFieldController.value.text.trim()
+        cardNumber: this
+            ._cardNumberFieldController
+            .value
+            .text
+            .trim()
             .replaceAll(new RegExp(r"\s+"), ""),
         cvv: this._cardCvvFieldController.value.text.trim(),
         expiryMonth: this._cardMonthFieldController.value.text.trim(),

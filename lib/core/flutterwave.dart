@@ -34,36 +34,33 @@ class Flutterwave {
   String narration;
   String? country;
 
-
   /// Flutterwave Constructor
-  Flutterwave.forUIPayment({
-    required this.context,
-    required this.publicKey,
-    required this.encryptionKey,
-    required this.currency,
-    required this.amount,
-    required this.email,
-    required this.fullName,
-    required this.txRef,
-    required this.isDebugMode,
-    required this.phoneNumber,
-    this.frequency,
-    this.duration = 0,
-    this.isPermanent = false,
-    this.narration = "",
-    this.acceptAccountPayment = false,
-    this.acceptCardPayment = false,
-    this.acceptUSSDPayment = false,
-    this.acceptRwandaMoneyPayment = false,
-    this.acceptMpesaPayment = false,
-    this.acceptZambiaPayment = false,
-    this.acceptGhanaPayment = false,
-    this.acceptUgandaPayment = false,
-    this.acceptFrancophoneMobileMoney = false,
-    this.acceptBankTransfer = false,
-    this.redirectUrl = ""
-
-  }) {
+  Flutterwave.forUIPayment(
+      {required this.context,
+      required this.publicKey,
+      required this.encryptionKey,
+      required this.currency,
+      required this.amount,
+      required this.email,
+      required this.fullName,
+      required this.txRef,
+      required this.isDebugMode,
+      required this.phoneNumber,
+      this.frequency,
+      this.duration = 0,
+      this.isPermanent = false,
+      this.narration = "",
+      this.acceptAccountPayment = false,
+      this.acceptCardPayment = false,
+      this.acceptUSSDPayment = false,
+      this.acceptRwandaMoneyPayment = false,
+      this.acceptMpesaPayment = false,
+      this.acceptZambiaPayment = false,
+      this.acceptGhanaPayment = false,
+      this.acceptUgandaPayment = false,
+      this.acceptFrancophoneMobileMoney = false,
+      this.acceptBankTransfer = false,
+      this.redirectUrl = ""}) {
     _validateKeys();
     this.currency = this.currency.toUpperCase();
 
@@ -74,8 +71,7 @@ class Flutterwave {
       this.acceptGhanaPayment = false;
       this.acceptUgandaPayment = false;
       this.acceptFrancophoneMobileMoney = false;
-    }
-    if (this.currency == FlutterwaveCurrency.KES) {
+    } else if (this.currency == FlutterwaveCurrency.KES) {
       this.acceptMpesaPayment = true;
 
       this.acceptRwandaMoneyPayment = false;
@@ -85,8 +81,7 @@ class Flutterwave {
       this.acceptFrancophoneMobileMoney = false;
       this.acceptAccountPayment = false;
       this.acceptBankTransfer = false;
-    }
-    if (this.currency == FlutterwaveCurrency.RWF) {
+    } else if (this.currency == FlutterwaveCurrency.RWF) {
       this.acceptRwandaMoneyPayment = true;
 
       this.acceptMpesaPayment = false;
@@ -97,8 +92,7 @@ class Flutterwave {
       this.acceptAccountPayment = false;
       this.acceptUSSDPayment = false;
       this.acceptBankTransfer = false;
-    }
-    if (this.currency == FlutterwaveCurrency.UGX) {
+    } else if (this.currency == FlutterwaveCurrency.UGX) {
       this.acceptUgandaPayment = true;
       this.acceptMpesaPayment = false;
       this.acceptZambiaPayment = false;
@@ -108,8 +102,7 @@ class Flutterwave {
       this.acceptUSSDPayment = false;
       this.acceptRwandaMoneyPayment = false;
       this.acceptBankTransfer = false;
-    }
-    if (this.currency == FlutterwaveCurrency.ZMW) {
+    } else if (this.currency == FlutterwaveCurrency.ZMW) {
       this.acceptZambiaPayment = true;
 
       this.acceptAccountPayment = false;
@@ -120,8 +113,7 @@ class Flutterwave {
       this.acceptFrancophoneMobileMoney = false;
       this.acceptUSSDPayment = false;
       this.acceptBankTransfer = false;
-    }
-    if (this.currency == FlutterwaveCurrency.GHS) {
+    } else if (this.currency == FlutterwaveCurrency.GHS) {
       this.acceptGhanaPayment = true;
       this.acceptAccountPayment = false;
       this.acceptRwandaMoneyPayment = false;
@@ -130,8 +122,7 @@ class Flutterwave {
       this.acceptFrancophoneMobileMoney = false;
       this.acceptUSSDPayment = false;
       this.acceptBankTransfer = false;
-    }
-    if (this.currency == FlutterwaveCurrency.XAF ||
+    } else if (this.currency == FlutterwaveCurrency.XAF ||
         this.currency == FlutterwaveCurrency.XOF) {
       this.acceptFrancophoneMobileMoney = true;
       this.acceptAccountPayment = false;
@@ -141,8 +132,7 @@ class Flutterwave {
       this.acceptUgandaPayment = false;
       this.acceptUSSDPayment = false;
       this.acceptBankTransfer = false;
-    }
-    if (this.currency == FlutterwaveCurrency.ZAR) {
+    } else if (this.currency == FlutterwaveCurrency.ZAR) {
       this.acceptFrancophoneMobileMoney = false;
       this.acceptAccountPayment = false;
       this.acceptRwandaMoneyPayment = false;
@@ -183,7 +173,6 @@ class Flutterwave {
         return "NG";
     }
   }
-
 
   /// Launches payment screen
   /// Returns a future ChargeResponse intance
@@ -229,13 +218,19 @@ class Flutterwave {
   }
 
   void _validateKeys() {
-    if(this.encryptionKey.trim().isEmpty) throw FlutterWaveError("Encrytion key is required");
-    if(this.publicKey.trim().isEmpty) throw FlutterWaveError("Public key is required");
-    if(this.currency.trim().isEmpty) throw FlutterWaveError("Currency is required");
-    if(this.amount.trim().isEmpty) throw FlutterWaveError("Amount is required");
-    if(this.email.trim().isEmpty) throw FlutterWaveError("Email is required");
-    if(this.fullName.trim().isEmpty) throw FlutterWaveError("Full Name is required");
-    if(this.txRef.trim().isEmpty) throw FlutterWaveError("txRef is required");
-    if(this.phoneNumber.trim().isEmpty) throw FlutterWaveError("Phone Number is required");
+    if (this.encryptionKey.trim().isEmpty)
+      throw FlutterWaveError("Encrytion key is required");
+    if (this.publicKey.trim().isEmpty)
+      throw FlutterWaveError("Public key is required");
+    if (this.currency.trim().isEmpty)
+      throw FlutterWaveError("Currency is required");
+    if (this.amount.trim().isEmpty)
+      throw FlutterWaveError("Amount is required");
+    if (this.email.trim().isEmpty) throw FlutterWaveError("Email is required");
+    if (this.fullName.trim().isEmpty)
+      throw FlutterWaveError("Full Name is required");
+    if (this.txRef.trim().isEmpty) throw FlutterWaveError("txRef is required");
+    if (this.phoneNumber.trim().isEmpty)
+      throw FlutterWaveError("Phone Number is required");
   }
 }

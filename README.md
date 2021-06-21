@@ -184,6 +184,8 @@ Create a `Flutterwave` instance by calling the constructor `Flutterwave.forUIPay
 - [dart](https://dart.dev/)
 - [http](https://pub.dev/packages/http)
 - [tripledes](https://pub.dev/packages/tripledes)
+- [flutter_3des](https://pub.dev/packages/flutter_3des)
+- [encrypt](https://pub.dev/packages/encrypt)
 - [webview_flutter](https://pub.dev/packages/webview_flutter)
 
 <a id="references"></a>
@@ -195,5 +197,6 @@ Create a `Flutterwave` instance by calling the constructor `Flutterwave.forUIPay
 
 <a id="support"></a>
 ## Support
+ - Compatibility has been bumped up to Android minSdk 19
+ - Supporting Android 4.4+ for reference checkout [Android 4.4 (API level 19)](https://developer.android.com/studio/releases/platforms#4.4)
 * Have issues integrating? Reach out via [our Developer forum](https://developer.flutterwave.com/discuss) for support
-
