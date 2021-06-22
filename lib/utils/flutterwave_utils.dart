@@ -1,19 +1,19 @@
+// A pure dart implementation
+import 'package:dart_3des/dart_3des.dart';
 import 'package:flutterwave/core/flutterwave_error.dart';
 import 'package:flutterwave/models/francophone_country.dart';
 import 'package:flutterwave/utils/flutterwave_currency.dart';
-// ignore: import_of_legacy_library_into_null_safe
-import 'package:tripledes/tripledes.dart';
 
 class FlutterwaveUtils {
-  
   /// Encrypts data using 3DES technology.
   /// Returns a String
-  static String tripleDESEncrypt(dynamic data, String encryptionKey) {
+  static Future<String> tripleDESEncrypt(
+      dynamic data, String encryptionKey) async {
     try {
       final blockCipher = BlockCipher(TripleDESEngine(), encryptionKey);
       return blockCipher.encodeB64(data);
     } catch (error) {
-      throw(FlutterWaveError("Unable to encrypt request"));
+      throw (FlutterWaveError("Unable to encrypt request"));
     }
   }
 
@@ -22,7 +22,6 @@ class FlutterwaveUtils {
   static Map<String, String> createCardRequest(String encryptedData) {
     return {"client": encryptedData};
   }
-
 
   /// Returns a list of francophone countries by their currencies
   static List<FrancoPhoneCountry> getFrancoPhoneCountries(

@@ -16,7 +16,6 @@ class AuthorizationWebview extends StatefulWidget {
 }
 
 class _AuthorizationWebviewState extends State<AuthorizationWebview> {
-
   @override
   void initState() {
     super.initState();
@@ -40,15 +39,15 @@ class _AuthorizationWebviewState extends State<AuthorizationWebview> {
   }
 
   void _pageStarted(String url) {
-    final redirectUrl = (this.widget._redirectUrl == null ||
-        this.widget._redirectUrl.isEmpty)
-        ? FlutterwaveURLS.DEFAULT_REDIRECT_URL
-        : this.widget._redirectUrl;
+    // ignore: unnecessary_null_comparison
+    final redirectUrl =
+        // ignore: unnecessary_null_comparison
+        (this.widget._redirectUrl == null || this.widget._redirectUrl.isEmpty)
+            ? FlutterwaveURLS.DEFAULT_REDIRECT_URL
+            : this.widget._redirectUrl;
 
-    final bool startsWithMyRedirectUrl = url
-        .toString()
-        .indexOf(redirectUrl.toString()) ==
-        0;
+    final bool startsWithMyRedirectUrl =
+        url.toString().indexOf(redirectUrl.toString()) == 0;
 
     if (url != this.widget._url && startsWithMyRedirectUrl) {
       this._onValidationSuccessful(url);
@@ -84,12 +83,8 @@ class _AuthorizationWebviewState extends State<AuthorizationWebview> {
   }
 
   void _onValidationSuccessful(String url) {
-    var response = Uri
-        .dataFromString(url)
-        .queryParameters["response"];
-    var resp = Uri
-        .dataFromString(url)
-        .queryParameters["resp"];
+    var response = Uri.dataFromString(url).queryParameters["response"];
+    var resp = Uri.dataFromString(url).queryParameters["resp"];
     if (response != null) {
       return this._handleCardRedirectRequest(response);
     }

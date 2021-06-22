@@ -120,8 +120,8 @@ class _PayWithUssdState extends State<PayWithUssd> {
   void _initiateUSSDPayment() async {
     if (this.selectedBank != null) {
       final USSDPaymentManager pm = this.widget._paymentManager;
-     FlutterwaveViewUtils.showConfirmPaymentModal(this.context,
-         pm.currency, pm.amount, this._payWithUSSD);
+      FlutterwaveViewUtils.showConfirmPaymentModal(
+          this.context, pm.currency, pm.amount, this._payWithUSSD);
     } else {
       this._showSnackBar("Please select a bank");
     }
@@ -142,10 +142,8 @@ class _PayWithUssdState extends State<PayWithUssd> {
         phoneNumber: ussdPaymentManager.phoneNumber);
 
     try {
-      final ChargeResponse response = await this
-          .widget
-          ._paymentManager
-          .payWithUSSD(request, http.Client());
+      final ChargeResponse response =
+          await this.widget._paymentManager.payWithUSSD(request, http.Client());
       if (FlutterwaveConstants.SUCCESS == response.status) {
         this._afterChargeInitiated(response);
       } else {
@@ -162,14 +160,15 @@ class _PayWithUssdState extends State<PayWithUssd> {
     final timeoutInMinutes = 2;
     final timeOutInSeconds = timeoutInMinutes * 60;
     final requestIntervalInSeconds = 7;
-    final numberOfTries = timeOutInSeconds/requestIntervalInSeconds;
+    final numberOfTries = timeOutInSeconds / requestIntervalInSeconds;
     int intialCount = 0;
 
     if (this._chargeResponse != null) {
       this._showLoading(FlutterwaveConstants.VERIFYING);
       final client = http.Client();
       ChargeResponse? response;
-      Timer.periodic(Duration(seconds: requestIntervalInSeconds), (timer) async {
+      Timer.periodic(Duration(seconds: requestIntervalInSeconds),
+          (timer) async {
         try {
           if ((intialCount >= numberOfTries) && response != null) {
             timer.cancel();
@@ -225,7 +224,8 @@ class _PayWithUssdState extends State<PayWithUssd> {
         textAlign: TextAlign.center,
       ),
     );
-    this._scaffoldKey.currentState?.showSnackBar(snackBar);
+    ScaffoldMessenger.of(this._scaffoldKey.currentContext!)
+        .showSnackBar(snackBar);
   }
 
   Future<void> _showLoading(String message) {
@@ -262,4 +262,3 @@ class _PayWithUssdState extends State<PayWithUssd> {
     }
   }
 }
-

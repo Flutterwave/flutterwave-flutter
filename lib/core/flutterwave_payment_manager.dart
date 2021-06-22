@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutterwave/core/bank_transfer_manager/bank_transfer_payment_manager.dart';
 import 'package:flutterwave/core/card_payment_manager/card_payment_manager.dart';
 import 'package:flutterwave/core/mobile_money/mobile_money_payment_manager.dart';

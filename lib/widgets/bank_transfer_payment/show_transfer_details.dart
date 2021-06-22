@@ -18,6 +18,7 @@ class AccountDetails extends StatelessWidget {
       child: Column(
         children: [
           Text(
+            // ignore: unnecessary_null_comparison
             note != null && note.isNotEmpty && note != "N/A"
                 ? note
                 : "Please make a bank transfer to this account",
@@ -39,7 +40,8 @@ class AccountDetails extends StatelessWidget {
                       textAlign: TextAlign.start,
                       style: TextStyle(color: Colors.black, fontSize: 18),
                     ),
-                    Text(authorization.transferAmount.toString(),
+                    Text(
+                      authorization.transferAmount.toString(),
                       textAlign: TextAlign.end,
                       style: TextStyle(color: Colors.black, fontSize: 18),
                     ),
@@ -57,7 +59,8 @@ class AccountDetails extends StatelessWidget {
                       textAlign: TextAlign.start,
                       style: TextStyle(color: Colors.black, fontSize: 18),
                     ),
-                    Text(authorization.transferAccount,
+                    Text(
+                      authorization.transferAccount,
                       textAlign: TextAlign.end,
                       style: TextStyle(color: Colors.black, fontSize: 18),
                     ),
@@ -75,7 +78,8 @@ class AccountDetails extends StatelessWidget {
                       textAlign: TextAlign.start,
                       style: TextStyle(color: Colors.black, fontSize: 18),
                     ),
-                    Text(authorization.transferBank,
+                    Text(
+                      authorization.transferBank,
                       textAlign: TextAlign.end,
                       style: TextStyle(color: Colors.black, fontSize: 18),
                     ),
@@ -94,7 +98,8 @@ class AccountDetails extends StatelessWidget {
                       textAlign: TextAlign.start,
                       style: TextStyle(color: Colors.black, fontSize: 18),
                     ),
-                    Text(this._extractNameFromNote(authorization.transferNote),
+                    Text(
+                      this._extractNameFromNote(authorization.transferNote),
                       textAlign: TextAlign.end,
                       style: TextStyle(color: Colors.black, fontSize: 18),
                     ),
@@ -105,9 +110,9 @@ class AccountDetails extends StatelessWidget {
                 height: 40,
                 width: double.infinity,
                 margin: EdgeInsets.fromLTRB(5, 10, 20, 5),
-                child: RaisedButton(
+                child: ElevatedButton(
                   onPressed: _handleTransferMade,
-                  color: Colors.orange,
+                  style: ElevatedButton.styleFrom(primary: Colors.orange),
                   child: Text(
                     "I have made the transfer",
                     style: TextStyle(color: Colors.white, fontSize: 18),
@@ -126,6 +131,7 @@ class AccountDetails extends StatelessWidget {
   }
 
   String _extractNameFromNote(final String note) {
+    // ignore: unnecessary_null_comparison
     if (note == null || note.isEmpty || note == "N/A") return "";
     final list = note.split(" ");
     final lastName = list.elementAt(list.length - 1);

@@ -4,13 +4,14 @@ class FlutterwavePaymentOption extends StatelessWidget {
   final Function handleClick;
   final String buttonText;
 
-  FlutterwavePaymentOption({required this.handleClick, required this.buttonText});
+  FlutterwavePaymentOption(
+      {required this.handleClick, required this.buttonText});
 
   @override
   Widget build(BuildContext context) {
-    return RaisedButton(
+    return ElevatedButton(
       onPressed: this._handleClick,
-      color: Color(0xFFfff1d0),
+      style: ElevatedButton.styleFrom(primary: Color(0xFFfff1d0)),
       child: Container(
         width: double.infinity,
         child: RichText(

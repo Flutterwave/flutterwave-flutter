@@ -115,21 +115,24 @@ class _PayWithBankTransferState extends State<PayWithBankTransfer> {
         }
         try {
           response = await FlutterwaveAPIUtils.verifyPayment(
-              this._bankTransferResponse!.meta!.authorization!.transferReference,
+              this
+                  ._bankTransferResponse!
+                  .meta!
+                  .authorization!
+                  .transferReference,
               client,
               this.widget._paymentManager.publicKey,
               this.widget._paymentManager.isDebugMode);
-
 
           if (response!.data!.status == FlutterwaveConstants.SUCCESSFUL &&
               response!.data!.amount == pm.amount &&
               response!.data!.currency == pm.currency &&
               response!.data!.flwRef ==
                   this
-                      ._bankTransferResponse
-                      !.meta
-                      !.authorization
-                      !.transferReference
+                      ._bankTransferResponse!
+                      .meta!
+                      .authorization!
+                      .transferReference
                       .toString()) {
             this._closeDialog();
             this._showSnackBar("Payment received");
@@ -168,7 +171,8 @@ class _PayWithBankTransferState extends State<PayWithBankTransfer> {
         textAlign: TextAlign.center,
       ),
     );
-    this._scaffoldKey.currentState?.showSnackBar(snackBar);
+    ScaffoldMessenger.of(this._scaffoldKey.currentContext!)
+        .showSnackBar(snackBar);
   }
 
   void _onPaymentComplete(final ChargeResponse chargeResponse) {
