@@ -29,10 +29,9 @@ class _MyHomePageState extends State<MyHomePage> {
   final amountController = TextEditingController();
   final currencyController = TextEditingController();
   final narrationController = TextEditingController();
-  final publicKeyController = TextEditingController(
-      text: "FLWPUBK_TEST-0fb289bc4c0e648c5169b28613400a81-X");
+  final publicKeyController = TextEditingController();
   final encryptionKeyController =
-      TextEditingController(text: "FLWSECK_TEST8cdb8c986fcb");
+      TextEditingController();
   final emailController = TextEditingController();
   final phoneNumberController = TextEditingController();
 
