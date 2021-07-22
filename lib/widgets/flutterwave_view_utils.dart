@@ -25,14 +25,14 @@ class FlutterwaveViewUtils {
           ),
           actions: [
             //Changed Continue to the right as confirmation buttons tend to be on the right for better UX.
-            FlatButton(
+            TextButton(
               onPressed: () => {Navigator.of(context).pop()},
               child: Text(
                 "CANCEL",
                 style: TextStyle(fontSize: 16, letterSpacing: 1),
               ),
             ),
-            FlatButton(
+            TextButton(
               onPressed: () => onContinuePressed(),
               child: Text(
                 "CONTINUE",

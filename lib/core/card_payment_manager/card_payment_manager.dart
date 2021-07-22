@@ -95,6 +95,7 @@ class CardPaymentManager {
 
       this._handleResponse(response);
     } catch (error) {
+      print(error);
       this
           .cardPaymentListener
           ?.onError("Unable to initiate card transaction. Please try again");

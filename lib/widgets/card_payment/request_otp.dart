@@ -60,9 +60,9 @@ class _RequestOTPState extends State<RequestOTP> {
                   margin: EdgeInsets.all(20),
                   width: double.infinity,
                   height: 50,
-                  child: RaisedButton(
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(primary: Colors.orangeAccent),
                     onPressed: this._continuePayment,
-                    color: Colors.orangeAccent,
                     child: Text(
                       "CONTINUE PAYMENT",
                       style: TextStyle(color: Colors.white),
@@ -78,7 +78,7 @@ class _RequestOTPState extends State<RequestOTP> {
   }
 
   String? _pinValidator(String? value) {
-    return value != null && value.trim().isEmpty ? "Otp is required" : null;
+    return value != null && value.trim().isEmpty ? "OTP is required" : null;
   }
 
   void _continuePayment() {

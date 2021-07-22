@@ -1,8 +1,9 @@
+import 'dart:convert';
+
+import 'package:dart_des/dart_des.dart';
 import 'package:flutterwave/core/flutterwave_error.dart';
 import 'package:flutterwave/models/francophone_country.dart';
 import 'package:flutterwave/utils/flutterwave_currency.dart';
-// ignore: import_of_legacy_library_into_null_safe
-import 'package:tripledes/tripledes.dart';
 
 class FlutterwaveUtils {
   
@@ -10,8 +11,9 @@ class FlutterwaveUtils {
   /// Returns a String
   static String tripleDESEncrypt(dynamic data, String encryptionKey) {
     try {
-      final blockCipher = BlockCipher(TripleDESEngine(), encryptionKey);
-      return blockCipher.encodeB64(data);
+      final blockCipher = DES(key: encryptionKey.codeUnits, mode: DESMode.ECB);
+      print(base64.encode(blockCipher.encrypt(data.codeUnits)));
+      return base64.encode(blockCipher.encrypt(data.codeUnits));
     } catch (error) {
       throw(FlutterWaveError("Unable to encrypt request"));
     }

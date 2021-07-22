@@ -71,9 +71,9 @@ class _PayWithVoucherState extends State<PayWithVoucher> {
                     width: double.infinity,
                     height: 50,
                     margin: EdgeInsets.fromLTRB(0, 40, 0, 20),
-                    child: RaisedButton(
+                    child: ElevatedButton(
                       onPressed: this._onPayPressed,
-                      color: Colors.orange,
+                      style: ElevatedButton.styleFrom(primary: Colors.orange),
                       child: Text(
                         "Pay with Voucher",
                         textAlign: TextAlign.center,
