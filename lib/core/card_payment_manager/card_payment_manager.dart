@@ -58,7 +58,6 @@ class CardPaymentManager {
     this.cardPaymentListener = cardPaymentListener;
     return this;
   }
-
   /// Responsible for encrypting charge requests using 3DES encryption
   /// it returns a map
   Map<String, String> _prepareRequest(
@@ -73,7 +72,7 @@ class CardPaymentManager {
       final ChargeCardRequest chargeCardRequest) async {
     Map<String, String> encryptedPayload;
     this.chargeCardRequest = chargeCardRequest;
-
+  
     if (this.cardPaymentListener == null) {
       this.cardPaymentListener!.onError("No CardPaymentListener Attached!");
       return;

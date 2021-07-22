@@ -12,7 +12,6 @@ class FlutterwaveUtils {
   static String tripleDESEncrypt(dynamic data, String encryptionKey) {
     try {
       final blockCipher = DES(key: encryptionKey.codeUnits, mode: DESMode.ECB);
-      print(base64.encode(blockCipher.encrypt(data.codeUnits)));
       return base64.encode(blockCipher.encrypt(data.codeUnits));
     } catch (error) {
       throw(FlutterWaveError("Unable to encrypt request"));
