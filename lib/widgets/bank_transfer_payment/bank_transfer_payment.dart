@@ -10,9 +10,6 @@ import 'package:flutterwave/utils/flutterwave_constants.dart';
 import 'package:flutterwave/widgets/flutterwave_view_utils.dart';
 import 'package:http/http.dart' as http;
 
-import 'pay_with_account_button.dart';
-import 'show_transfer_details.dart';
-
 class PayWithBankTransfer extends StatefulWidget {
   final BankTransferPaymentManager _paymentManager;
 

@@ -1,4 +1,6 @@
 import 'dart:async';
+import 'dart:js';
+import 'dart:js';
 
 import 'package:flutter/material.dart';
 import 'package:flutterwave/core/core_utils/flutterwave_api_utils.dart';
@@ -13,6 +15,18 @@ import 'package:flutterwave/widgets/card_payment/authorization_webview.dart';
 import 'package:flutterwave/widgets/card_payment/request_otp.dart';
 import 'package:flutterwave/widgets/flutterwave_view_utils.dart';
 import 'package:http/http.dart' as http;
+
+import '../../core/core_utils/flutterwave_api_utils.dart';
+import '../../core/metrics/metric_manager.dart';
+import '../../core/pay_with_account_manager/bank_account_manager.dart';
+import '../../flutterwave.dart';
+import '../../models/bank.dart';
+import '../../models/requests/authorization.dart';
+import '../../models/requests/pay_with_bank_account/pay_with_bank_account.dart';
+import '../../models/responses/charge_response.dart';
+import '../card_payment/authorization_webview.dart';
+import '../card_payment/request_otp.dart';
+import '../flutterwave_view_utils.dart';
 
 class PayWithBankAccount extends StatefulWidget {
   final BankAccountPaymentManager _paymentManager;
@@ -124,7 +138,7 @@ class PayWithBankAccountState extends State<PayWithBankAccount> {
                     width: double.infinity,
                     height: 50,
                     margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                    child: RaisedButton(
+                    child: ElevatedButton(
                       onPressed: this._onPaymentClicked,
                       color: Colors.orangeAccent,
                       child: Text(
