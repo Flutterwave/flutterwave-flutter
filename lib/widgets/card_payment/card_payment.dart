@@ -199,12 +199,15 @@ class _CardPaymentState extends State<CardPayment>
   }
 
   void _makeCardPayment() {
-    Navigator.of(this.context).pop();
-
+    // Navigator.of(this.context).pop();
     this._showLoading(FlutterwaveConstants.INITIATING_PAYMENT);
 
     final ChargeCardRequest chargeCardRequest = ChargeCardRequest(
-        cardNumber: this._cardNumberFieldController.value.text.trim()
+        cardNumber: this
+            ._cardNumberFieldController
+            .value
+            .text
+            .trim()
             .replaceAll(new RegExp(r"\s+"), ""),
         cvv: this._cardCvvFieldController.value.text.trim(),
         expiryMonth: this._cardMonthFieldController.value.text.trim(),

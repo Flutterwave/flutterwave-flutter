@@ -16,9 +16,9 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  MyHomePage({Key? key, this.title}) : super(key: key);
 
-  final String title;
+  final String? title;
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -44,7 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text(widget.title!),
       ),
       body: Container(
         width: double.infinity,
@@ -62,7 +62,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   style: TextStyle(color: Colors.black),
                   decoration: InputDecoration(hintText: "Amount"),
                   validator: (value) =>
-                      value.isNotEmpty ? null : "Amount is required",
+                      value!.isNotEmpty ? null : "Amount is required",
                 ),
               ),
               Container(
@@ -77,7 +77,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     hintText: "Currency",
                   ),
                   validator: (value) =>
-                      value.isNotEmpty ? null : "Currency is required",
+                      value!.isNotEmpty ? null : "Currency is required",
                 ),
               ),
               Container(
@@ -114,7 +114,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     hintText: "Email",
                   ),
                   validator: (value) =>
-                      value.isNotEmpty ? null : "Email is required",
+                      value!.isNotEmpty ? null : "Email is required",
                 ),
               ),
               Container(
@@ -127,7 +127,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     hintText: "Phone Number",
                   ),
                   validator: (value) =>
-                      value.isNotEmpty ? null : "Phone Number is required",
+                      value!.isNotEmpty ? null : "Phone Number is required",
                 ),
               ),
               Container(
@@ -169,7 +169,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   _onPressed() {
-    if (this.formKey.currentState.validate()) {
+    if (this.formKey.currentState!.validate()) {
       this._handlePaymentInitialization();
     }
   }
@@ -193,7 +193,7 @@ class _MyHomePageState extends State<MyHomePage> {
     );
     final response = await flutterwave.initializeForUiPayments();
     if (response != null) {
-      this.showLoading(response.data.status);
+      this.showLoading(response.data!.status);
     } else {
       this.showLoading("No Response!");
     }
@@ -251,7 +251,7 @@ class _MyHomePageState extends State<MyHomePage> {
     Navigator.pop(this.context);
   }
 
-  Future<void> showLoading(String message) {
+  Future<void> showLoading(String? message) {
     return showDialog(
       context: this.context,
       barrierDismissible: false,
@@ -261,7 +261,7 @@ class _MyHomePageState extends State<MyHomePage> {
             margin: EdgeInsets.fromLTRB(30, 20, 30, 20),
             width: double.infinity,
             height: 50,
-            child: Text(message),
+            child: Text(message!),
           ),
         );
       },

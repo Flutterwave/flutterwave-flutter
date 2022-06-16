@@ -119,7 +119,8 @@ class _FlutterwaveUIState extends State<FlutterwaveUI> {
                                   width: double.infinity,
                                   height: 50.0,
                                   child: FlutterwavePaymentOption(
-                                    handleClick: this._launchPayWithAccountWidget,
+                                    handleClick:
+                                        this._launchPayWithAccountWidget,
                                     buttonText: "Account",
                                   ),
                                 ),
@@ -172,7 +173,7 @@ class _FlutterwaveUIState extends State<FlutterwaveUI> {
                                   height: 50.0,
                                   child: FlutterwavePaymentOption(
                                     handleClick:
-                                    this._launchBankTransferPaymentWidget,
+                                        this._launchBankTransferPaymentWidget,
                                     buttonText: "Bank Transfer",
                                   ),
                                 ),
@@ -205,7 +206,7 @@ class _FlutterwaveUIState extends State<FlutterwaveUI> {
                                   height: 50.0,
                                   child: FlutterwavePaymentOption(
                                     handleClick:
-                                    this._launchMobileMoneyPaymentWidget,
+                                        this._launchMobileMoneyPaymentWidget,
                                     buttonText: "Rwanda Mobile Money",
                                   ),
                                 ),
@@ -223,7 +224,7 @@ class _FlutterwaveUIState extends State<FlutterwaveUI> {
                                   height: 50.0,
                                   child: FlutterwavePaymentOption(
                                     handleClick:
-                                    this._launchMobileMoneyPaymentWidget,
+                                        this._launchMobileMoneyPaymentWidget,
                                     buttonText: "Ghana Mobile Money",
                                   ),
                                 ),
@@ -241,7 +242,7 @@ class _FlutterwaveUIState extends State<FlutterwaveUI> {
                                   height: 50.0,
                                   child: FlutterwavePaymentOption(
                                     handleClick:
-                                    this._launchMobileMoneyPaymentWidget,
+                                        this._launchMobileMoneyPaymentWidget,
                                     buttonText: "Uganda Mobile Money",
                                   ),
                                 ),
@@ -259,7 +260,7 @@ class _FlutterwaveUIState extends State<FlutterwaveUI> {
                                   height: 50.0,
                                   child: FlutterwavePaymentOption(
                                     handleClick:
-                                    this._launchMobileMoneyPaymentWidget,
+                                        this._launchMobileMoneyPaymentWidget,
                                     buttonText: "Zambia Mobile Money",
                                   ),
                                 ),
@@ -293,7 +294,8 @@ class _FlutterwaveUIState extends State<FlutterwaveUI> {
                                 SizedBox(
                                   height: 50.0,
                                   child: FlutterwavePaymentOption(
-                                    handleClick: this._launchVoucherPaymentWidget,
+                                    handleClick:
+                                        this._launchVoucherPaymentWidget,
                                     buttonText: "Voucher",
                                   ),
                                 ),
@@ -308,7 +310,8 @@ class _FlutterwaveUIState extends State<FlutterwaveUI> {
                             child: SizedBox(
                               height: 50.0,
                               child: FlutterwavePaymentOption(
-                                handleClick: this._launchMobileMoneyPaymentWidget,
+                                handleClick:
+                                    this._launchMobileMoneyPaymentWidget,
                                 buttonText: "Francophone Mobile Money",
                               ),
                             ),
@@ -395,11 +398,12 @@ class _FlutterwaveUIState extends State<FlutterwaveUI> {
 
   void _launchBankTransferPaymentWidget() async {
     final BankTransferPaymentManager bankTransferPaymentManager =
-    this.widget._flutterwavePaymentManager.getBankTransferPaymentManager();
+        this.widget._flutterwavePaymentManager.getBankTransferPaymentManager();
     final response = await Navigator.push(
       this.context,
       MaterialPageRoute(
-          builder: (context) => PayWithBankTransfer(bankTransferPaymentManager)),
+          builder: (context) =>
+              PayWithBankTransfer(bankTransferPaymentManager)),
     );
     _handleBackPress(response);
   }
@@ -415,8 +419,8 @@ class _FlutterwaveUIState extends State<FlutterwaveUI> {
   }
 
   void _handleBackPress(dynamic result) {
-    if (result == null || result is ChargeResponse){
-      final ChargeResponse? chargeResponse = result as ChargeResponse;
+    if (result == null || result is ChargeResponse) {
+      final ChargeResponse? chargeResponse = result as ChargeResponse?;
       String message;
       if (chargeResponse != null) {
         message = chargeResponse.message!;

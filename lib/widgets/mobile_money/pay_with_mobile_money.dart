@@ -10,6 +10,7 @@ import 'package:flutterwave/models/responses/charge_response.dart';
 import 'package:flutterwave/utils/flutterwave_constants.dart';
 import 'package:flutterwave/utils/flutterwave_currency.dart';
 import 'package:flutterwave/utils/flutterwave_utils.dart';
+import 'package:flutterwave/utils/flutterwave_utils_impl.dart';
 import 'package:flutterwave/widgets/card_payment/authorization_webview.dart';
 import 'package:flutterwave/widgets/flutterwave_view_utils.dart';
 import 'package:http/http.dart' as http;
@@ -237,8 +238,9 @@ class _PayWithMobileMoneyState extends State<PayWithMobileMoney> {
   }
 
   Widget _getFrancoPhoneCountries() {
-    final francoPhoneCountries = FlutterwaveUtils.getFrancoPhoneCountries(
-        this.widget._paymentManager.currency);
+    FlutterwaveUtils flutterwaveUtils = FlutterwaveUtilsImpl();
+    final francoPhoneCountries = flutterwaveUtils
+        .getFrancoPhoneCountries(this.widget._paymentManager.currency);
     return Container(
       height: 220,
       margin: EdgeInsets.fromLTRB(0, 10, 0, 0),

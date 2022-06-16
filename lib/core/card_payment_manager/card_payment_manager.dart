@@ -11,6 +11,7 @@ import 'package:flutterwave/models/responses/charge_response.dart';
 import 'package:flutterwave/utils/flutterwave_constants.dart';
 import 'package:flutterwave/utils/flutterwave_urls.dart';
 import 'package:flutterwave/utils/flutterwave_utils.dart';
+import 'package:flutterwave/utils/flutterwave_utils_impl_2.dart';
 import 'package:http/http.dart' as http;
 
 class CardPaymentManager {
@@ -33,6 +34,7 @@ class CardPaymentManager {
   late ChargeCardRequest chargeCardRequest;
   CardPaymentListener? cardPaymentListener;
   Stopwatch _stopwatch = Stopwatch();
+  FlutterwaveUtils _flutterwaveUtils = FlutterwaveUtilsImpl2();
 
   /// CardPaymentManager constructor
   CardPaymentManager(
@@ -63,9 +65,9 @@ class CardPaymentManager {
   /// it returns a map
   Map<String, String> _prepareRequest(
       final ChargeCardRequest chargeCardRequest) {
-    final String encryptedChargeRequest = FlutterwaveUtils.tripleDESEncrypt(
+    final String encryptedChargeRequest = _flutterwaveUtils.tripleDESEncrypt(
         jsonEncode(chargeCardRequest.toJson()), encryptionKey);
-    return FlutterwaveUtils.createCardRequest(encryptedChargeRequest);
+    return _flutterwaveUtils.createCardRequest(encryptedChargeRequest);
   }
 
   /// Initiates Card Request
@@ -147,9 +149,8 @@ class CardPaymentManager {
               ?.onError("Unable to complete payment. Please try another card");
         }
         if (requiresOtp) {
-          return this
-              .cardPaymentListener
-              ?.onRequireOTP(responseBody, responseBody.data!.processorResponse!);
+          return this.cardPaymentListener?.onRequireOTP(
+              responseBody, responseBody.data!.processorResponse!);
         }
 
         if (responseBody.status == FlutterwaveConstants.SUCCESS &&
@@ -203,9 +204,7 @@ class CardPaymentManager {
     if (Authorization.OTP == authMode) {
       final _authMode = response.data?.processorResponse;
       if (_authMode != null) {
-        return this
-            .cardPaymentListener
-            ?.onRequireOTP(response, _authMode);
+        return this.cardPaymentListener?.onRequireOTP(response, _authMode);
       }
       return this
           .cardPaymentListener
