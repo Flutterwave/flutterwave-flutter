@@ -59,7 +59,7 @@ class _PayWithMpesaState extends State<PayWithMpesa> {
                     width: double.infinity,
                     height: 50,
                     margin: EdgeInsets.fromLTRB(0, 40, 0, 20),
-                    child: RaisedButton(
+                    child: ElevatedButton(
                       onPressed: this._onPayPressed,
                       color: Colors.orange,
                       child: Text(

@@ -60,7 +60,7 @@ class _RequestOTPState extends State<RequestOTP> {
                   margin: EdgeInsets.all(20),
                   width: double.infinity,
                   height: 50,
-                  child: RaisedButton(
+                  child: ElevatedButton(
                     onPressed: this._continuePayment,
                     color: Colors.orangeAccent,
                     child: Text(

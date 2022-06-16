@@ -105,7 +105,7 @@ class AccountDetails extends StatelessWidget {
                 height: 40,
                 width: double.infinity,
                 margin: EdgeInsets.fromLTRB(5, 10, 20, 5),
-                child: RaisedButton(
+                child: ElevatedButton(
                   onPressed: _handleTransferMade,
                   color: Colors.orange,
                   child: Text(
