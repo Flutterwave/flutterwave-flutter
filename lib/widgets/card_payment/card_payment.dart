@@ -199,8 +199,6 @@ class _CardPaymentState extends State<CardPayment>
   }
 
   void _makeCardPayment() {
-    Navigator.of(this.context).pop();
-
     this._showLoading(FlutterwaveConstants.INITIATING_PAYMENT);
 
     final ChargeCardRequest chargeCardRequest = ChargeCardRequest(
