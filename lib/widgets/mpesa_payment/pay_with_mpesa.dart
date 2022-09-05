@@ -59,9 +59,11 @@ class _PayWithMpesaState extends State<PayWithMpesa> {
                     width: double.infinity,
                     height: 50,
                     margin: EdgeInsets.fromLTRB(0, 40, 0, 20),
-                    child: RaisedButton(
+                    child: ElevatedButton(
                       onPressed: this._onPayPressed,
-                      color: Colors.orange,
+                     style: ElevatedButton.styleFrom(
+                        backgroundColor:  Colors.orangeAccent,
+                      ),
                       child: Text(
                         "Pay with Mpesa",
                         textAlign: TextAlign.center,
@@ -136,7 +138,7 @@ class _PayWithMpesaState extends State<PayWithMpesa> {
         textAlign: TextAlign.center,
       ),
     );
-    this._scaffoldKey.currentState!.showSnackBar(snackBar);
+    ScaffoldMessenger.maybeOf(this._scaffoldKey.currentContext!)?.showSnackBar(snackBar);
   }
 
   void _handlePayment() async {

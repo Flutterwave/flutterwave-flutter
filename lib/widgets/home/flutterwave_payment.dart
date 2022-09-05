@@ -411,7 +411,7 @@ class _FlutterwaveUIState extends State<FlutterwaveUI> {
         textAlign: TextAlign.center,
       ),
     );
-    this._scaffoldKey.currentState!.showSnackBar(snackBar);
+    ScaffoldMessenger.of(this._scaffoldKey.currentContext!).showSnackBar(snackBar);
   }
 
   void _handleBackPress(dynamic result) {
