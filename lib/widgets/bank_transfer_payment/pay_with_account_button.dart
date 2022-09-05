@@ -11,9 +11,11 @@ class PayWithTransferButton extends StatelessWidget {
       height: 50,
       width: double.infinity,
       margin: EdgeInsets.fromLTRB(20, 100, 20, 20),
-      child: RaisedButton(
+      child: ElevatedButton(
         onPressed: this._hanldePayWithTransfer,
-        color: Colors.orange,
+        style: ElevatedButton.styleFrom(
+                        backgroundColor:  Colors.orangeAccent,
+                      ),
         child: Text(
           "PAY",
           style: TextStyle(color: Colors.white, fontSize: 15),

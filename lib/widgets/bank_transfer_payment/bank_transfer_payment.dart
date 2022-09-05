@@ -168,7 +168,7 @@ class _PayWithBankTransferState extends State<PayWithBankTransfer> {
         textAlign: TextAlign.center,
       ),
     );
-    this._scaffoldKey.currentState?.showSnackBar(snackBar);
+    ScaffoldMessenger.of(_scaffoldKey.currentState!.context).showSnackBar(snackBar);
   }
 
   void _onPaymentComplete(final ChargeResponse chargeResponse) {

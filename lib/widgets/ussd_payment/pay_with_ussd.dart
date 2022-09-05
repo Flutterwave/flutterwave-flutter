@@ -225,7 +225,8 @@ class _PayWithUssdState extends State<PayWithUssd> {
         textAlign: TextAlign.center,
       ),
     );
-    this._scaffoldKey.currentState?.showSnackBar(snackBar);
+    ScaffoldMessenger.maybeOf(this._scaffoldKey.currentContext!)?.showSnackBar(
+        snackBar);
   }
 
   Future<void> _showLoading(String message) {
