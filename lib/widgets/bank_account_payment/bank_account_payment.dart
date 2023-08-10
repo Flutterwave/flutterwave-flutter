@@ -124,9 +124,16 @@ class PayWithBankAccountState extends State<PayWithBankAccount> {
                     width: double.infinity,
                     height: 50,
                     margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                    child: RaisedButton(
+                    child: ElevatedButton(
                       onPressed: this._onPaymentClicked,
-                      color: Colors.orangeAccent,
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.blue,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(
+                              20,
+                            ),
+                          ),
+                          elevation: 0.5),
                       child: Text(
                         "PAY WITH ACCOUNT",
                         style: TextStyle(color: Colors.white, fontSize: 15),
